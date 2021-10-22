@@ -1,21 +1,57 @@
-name: CI
+name: Deploy Nitro SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      sdkVersion:
+        description: 'Nitro SDK Version (e.g. 13.49.0.993)'
+        required: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  fetchsdk:
+    name: Fetching SDK Version
+    runs-on: [self-hosted, linux, x64, nitrosys]
+    timeout-minutes: 5
+
     steps:
-      - uses: actions/checkout@v2
-      - name: clear
-        run: rm -rf *
-        shell: bash
-      #- download and unpack sdk
-      #- name: commit
-      #  run: |
-      #    git config --global user.name 'bot'
-      #    git config --global user.email 'bot@users.noreply.github.com'
-      #    git add -A
-      #    git commit -am "automated commit"
-      #    git push
+      - name: Set NitroSDK version
+        run: |
+          echo "SDK_VERSION_DIR=${{ github.event.inputs.sdkVersion }}" >> $GITHUB_ENV
+          echo "SDK_VERSION=$(sed 's/\./_/g' <<< ${{ github.event.inputs.sdkVersion }})" >> $GITHUB_ENV
+    
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+    
+      - name: Config git
+        run: |
+          git config --local user.email "robotics@gonitro.com"
+          git config --local user.name "nitro-robot"
+      - name: Assume IAM role for nitropro-builds
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: eu-central-1
+          role-to-assume: arn:aws:iam::404497729781:role/github-runners-nitropro-builds
+          role-duration-seconds: 1200
+          role-session-name: nitropro-builds
+
+      - name: Pull NitroSDK from s3 - nitropro-builds
+        run: |
+          aws s3 cp s3://nitropro-builds/master/${{ env.SDK_VERSION_DIR }}/dev/bin/window/nitrosdk_${{ env.SDK_VERSION }}_x64.zip .
+          mkdir nitrosdk
+          unzip nitrosdk_${{ env.SDK_VERSION }}_x64.zip -d nitrosdk
+        
+      - name: Commit new docs
+        run: |
+          rm -rf docs
+          mv nitrosdk/docs/cpp docs
+          git add docs
+          git commit -am "Update docs"
+          git clean -xfd
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.NITRO_ROBOT_COMMIT_TOKEN }}
+          branch: master
