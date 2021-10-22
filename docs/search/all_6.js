@@ -11,6 +11,6 @@ var searchData=
   ['get_5fpdf_5fversion_43',['get_pdf_version',['../classnitro_1_1sdk_1_1v1_1_1document.html#ae124269f69d44269e3d031e4d58aad1a',1,'nitro::sdk::v1::document']]],
   ['get_5frotation_44',['get_rotation',['../classnitro_1_1sdk_1_1v1_1_1page.html#a1b54f89b47472ce4ed26250e8c7b7659',1,'nitro::sdk::v1::page']]],
   ['get_5ftext_45',['get_text',['../classnitro_1_1sdk_1_1v1_1_1page.html#ace6f51196a13fd1eda7a998852dc2739',1,'nitro::sdk::v1::page']]],
-  ['get_5fversion_46',['get_version',['../namespacenitro_1_1sdk_1_1v1.html#af14d49dad2b764cba1067af52200047c',1,'nitro::sdk::get_version()'],['../namespacenitro_1_1sdk_1_1v1.html#af14d49dad2b764cba1067af52200047c',1,'nitro::sdk::v1::get_version()']]],
+  ['get_5fversion_46',['get_version',['../namespacenitro_1_1sdk_1_1v1.html#ac5d7ac9e995e727076948092ad709398',1,'nitro::sdk::get_version()'],['../namespacenitro_1_1sdk_1_1v1.html#ac5d7ac9e995e727076948092ad709398',1,'nitro::sdk::v1::get_version()']]],
   ['gif_47',['gif',['../namespacenitro_1_1sdk.html#a54ac48efb76ea8a834c71403df098b74ad38252762d3d4fd229faae637fd13f4e',1,'nitro::sdk']]]
 ];
