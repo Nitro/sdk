@@ -1,4 +1,4 @@
-# Nitro PDF SDK
+# Nitro SDK
 
 > **C++ SDK to edit, render & convert PDFs.**  
 > *With bindings for: C#, Java & GO.*
