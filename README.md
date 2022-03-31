@@ -7,7 +7,7 @@
 Contact us for more information: https://www.gonitro.com/about/contact.*
 
 ## Usage
-A complete reference of the SDK can be found at https://github.com/Nitro/sdk/wiki, but here's some quick examples:
+A complete reference of the SDK can be found at https://github.com/nitro/sdk/wiki, but here's some quick examples:
 
 ### Edit
 ```cpp
