@@ -6,7 +6,7 @@
 *🚨  This is an early, unreleased version of the Nitro SDK. It is available as-is and should not be redistributed.  
 Contact us for more information: https://www.gonitro.com/about/contact.*
 
-## Useage
+## Usage
 A complete reference of the SDK can be found at https://github.com/Nitro/sdk/wiki, but here's some quick examples:
 
 ### Edit
