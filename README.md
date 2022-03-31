@@ -1,5 +1,28 @@
-# Native-SDK
+# Nitro PDF SDK
 
-Home of Nitro's Core-SDK. The SDK is PDF & Converison library. It's in C++, but also provides bindings for C#, Java, Phython and Go.
+> **C++ SDK to edit, render & convert PDFs.**  
+> *With bindings for: C#, Java & GO.*
 
-Click here for [SDK documentation and samples](https://special-chainsaw-65cb1481.pages.github.io/)
+*🚨  This is an early, unreleased version of the Nitro SDK. It is available as-is and should not be redistributed.  
+Contact us for more information: https://www.gonitro.com/about/contact.*
+
+## Useage
+A complete reference of the SDK can be found at https://github.com/Nitro/sdk/wiki, but here's some quick examples:
+
+### Edit
+```cpp
+auto doc = nitro::sdk::open("my_doc.pdf")
+auto page = doc.get_page(0);
+page.add_image("my_image.png", {0, 256, 256, 0}));
+```
+
+### Render
+```cpp
+auto doc = nitro::sdk::open("my_doc.pdf")
+doc.get_page(0).view().render("my_doc_rendered.png");
+```
+
+### Convert
+```cpp
+nitro::sdk::pdf_to_pdfa("my_doc.pdf", "my_doc.pdfa");
+```
