@@ -11,14 +11,14 @@ A complete reference of the SDK can be found at https://github.com/nitro/sdk/wik
 
 ### Edit
 ```cpp
-auto doc = nitro::sdk::open("my_doc.pdf")
+auto doc = nitro::sdk::open("my_doc.pdf");
 auto page = doc.get_page(0);
 page.add_image("my_image.png", {0, 256, 256, 0}));
 ```
 
 ### Render
 ```cpp
-auto doc = nitro::sdk::open("my_doc.pdf")
+auto doc = nitro::sdk::open("my_doc.pdf");
 doc.get_page(0).view().render("my_doc_rendered.png");
 ```
 
