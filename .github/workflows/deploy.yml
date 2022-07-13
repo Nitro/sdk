@@ -10,7 +10,7 @@ on:
 jobs:
   fetchsdk:
     name: Fetching SDK Version
-    runs-on: [self-hosted, linux, x64, nitrosys]
+    runs-on: [self-hosted, aws, nitro-pro-dev, linux]
     timeout-minutes: 5
 
     steps:
